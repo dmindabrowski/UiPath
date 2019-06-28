@@ -51,7 +51,7 @@
     <Flowchart.Variables>
       <Variable x:TypeArguments="x:String" Name="lastPage" />
       <Variable x:TypeArguments="x:String" Name="pageNumber" />
-      <Variable x:TypeArguments="x:String" Default="C:\Users\Abile\Desktop\sapHubPDF\" Name="pathToScreenshotsFolder" />
+      <Variable x:TypeArguments="x:String" Name="pathToScreenshotsFolder" />
       <Variable x:TypeArguments="x:String" Name="mergedFiles" />
       <Variable x:TypeArguments="scg:List(x:String)" Name="filesList" />
       <Variable x:TypeArguments="x:String" Name="outputCourseName" />
@@ -59,6 +59,7 @@
       <Variable x:TypeArguments="s:DateTime" Name="endDateTime" />
       <Variable x:TypeArguments="x:String" Name="duration" />
       <Variable x:TypeArguments="ui:UiElement" Name="foundImagePrint" />
+      <Variable x:TypeArguments="x:String" Name="desktopPath" />
     </Flowchart.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -218,7 +219,7 @@
                       <av:PointCollection x:Key="ConnectorLocation">250,560 300,560 300,413.6</av:PointCollection>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <Sequence DisplayName="Download page" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                  <Sequence DisplayName="Download page" sap:VirtualizedContainerService.HintSize="336.8,1020" sap2010:WorkflowViewState.IdRef="Sequence_11">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -338,7 +339,7 @@
 "&lt;b&gt;Start: &lt;/b&gt;" +startDateTime.ToString(“dd.MM.yyyy hh:mm:ss”) +"&lt;br/&gt;" +
 "&lt;b&gt;End: &lt;/b&gt;"  +endDateTime.ToString(“dd.MM.yyyy hh:mm:ss”)  +"&lt;br/&gt;" +
 "&lt;b&gt;Duration: &lt;/b&gt;"+ duration +"&lt;br/&gt;" + 
-"&lt;b&gt;Pages: &lt;/b&gt;" + Convert.ToInt32(lastPage.Replace("/ ","")).ToString +
+"&lt;b&gt;Pages: &lt;/b&gt;" + Convert.ToInt32(lastPage.Replace("/ ","")).ToString + "&lt;br/&gt;" +
 "&lt;b&gt;Machine: &lt;/b&gt;" + Environment.UserDomainName]</InArgument>
                   </Assign.Value>
                 </Assign>
@@ -415,7 +416,7 @@
           <av:PointCollection x:Key="ConnectorLocation">300,186.4 300,233.6</av:PointCollection>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <Sequence DisplayName="Preparation" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="Sequence_16">
+      <Sequence DisplayName="Preparation" sap:VirtualizedContainerService.HintSize="336.8,684.8" sap2010:WorkflowViewState.IdRef="Sequence_16">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -426,6 +427,15 @@
             <OutArgument x:TypeArguments="x:String">[outputCourseName]</OutArgument>
           </ui:InputDialog.Result>
         </ui:InputDialog>
+        <ui:GetEnvironmentFolder DisplayName="Get Environment Folder" FolderPath="[desktopPath]" sap:VirtualizedContainerService.HintSize="314.4,62.4" sap2010:WorkflowViewState.IdRef="GetEnvironmentFolder_1" SpecialFolder="Desktop" />
+        <Assign sap:VirtualizedContainerService.HintSize="314.4,60" sap2010:WorkflowViewState.IdRef="Assign_13">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:String">[pathToScreenshotsFolder]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:String">[desktopPath +"\UiPath Robots\sapHub\"]</InArgument>
+          </Assign.Value>
+        </Assign>
         <Assign sap:VirtualizedContainerService.HintSize="314.4,60" sap2010:WorkflowViewState.IdRef="Assign_4">
           <Assign.To>
             <OutArgument x:TypeArguments="s:DateTime">[startDateTime]</OutArgument>
