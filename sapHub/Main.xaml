@@ -337,20 +337,9 @@
                     <InArgument x:TypeArguments="x:String" xml:space="preserve">["&lt;b&gt;Course: &lt;/b&gt;" + outputCourseName +"&lt;br/&gt;" +
 "&lt;b&gt;Start: &lt;/b&gt;" +startDateTime.ToString(“dd.MM.yyyy hh:mm:ss”) +"&lt;br/&gt;" +
 "&lt;b&gt;End: &lt;/b&gt;"  +endDateTime.ToString(“dd.MM.yyyy hh:mm:ss”)  +"&lt;br/&gt;" +
-"&lt;b&gt;Duration: &lt;/b&gt;"+ duration +"&lt;br/&gt;" +
-"&lt;b&gt;Pages: &lt;/b&gt;" + Convert.ToInt32(lastPage.Replace("/ ","")).ToString]</InArgument>
-                  </Assign.Value>
-                </Assign>
-                <Assign sap:VirtualizedContainerService.HintSize="314.4,64" sap2010:WorkflowViewState.IdRef="Assign_13">
-                  <Assign.To>
-                    <OutArgument x:TypeArguments="x:String">[body]</OutArgument>
-                  </Assign.To>
-                  <Assign.Value>
-                    <InArgument x:TypeArguments="x:String" xml:space="preserve">["Course: " + outputCourseName &amp; vbnewline &amp;
-"Start: " +startDateTime.ToString(“dd.MM.yyyy hh:mm:ss”)  &amp; vbnewline &amp;
-"End: "  +endDateTime.ToString(“dd.MM.yyyy hh:mm:ss”)  &amp; vbnewline &amp; 
-"Duration: "+ duration &amp; vbnewline &amp;
-"Pages: " + Convert.ToInt32(lastPage.Replace("/ ","")).ToString]</InArgument>
+"&lt;b&gt;Duration: &lt;/b&gt;"+ duration +"&lt;br/&gt;" + 
+"&lt;b&gt;Pages: &lt;/b&gt;" + Convert.ToInt32(lastPage.Replace("/ ","")).ToString +
+"&lt;b&gt;Machine: &lt;/b&gt;" + Environment.UserDomainName]</InArgument>
                   </Assign.Value>
                 </Assign>
                 <ui:SendMail Bcc="{x:Null}" Cc="{x:Null}" MailMessage="{x:Null}" TimeoutMS="{x:Null}" Body="[newMail.body]" DisplayName="Send SMTP Mail Message" Email="damian.dabrowski@abile.pl" EnableSSL="True" From="robot@uipath.com" sap:VirtualizedContainerService.HintSize="314.4,146.4" sap2010:WorkflowViewState.IdRef="SendMail_2" IsBodyHtml="True" Name="UiPath Robot" Password="siemano1" Port="465" SecureConnection="Auto" Server="smtp.gmail.com" Subject="UiPath Robot - sapHub" To="damian.dabrowski@abile.pl">
